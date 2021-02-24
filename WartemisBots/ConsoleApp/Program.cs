@@ -2,10 +2,7 @@
 using Serilog.Events;
 using System;
 using System.Threading;
-using Chess;
 using Chess.Models;
-using PlanetWars.Models;
-using Chess.Tools;
 
 namespace ConsoleApp {
     class Program {
@@ -30,8 +27,9 @@ namespace ConsoleApp {
             ChessBot cb = new ChessBot("Chesstily");
             cb.Start();
 
-            string message = "{\"state\":{\"fen\": \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1\"}}";
-            cb.Connection.RaiseOnStateReceivedEventManually(message);
+            cb.Connection.RaiseOnStateReceivedEventManually(
+                fakeReceived: "{\"state\":{\"fen\": \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1\"}}"
+            );
 
             cb.Board.PrintBoard();
 

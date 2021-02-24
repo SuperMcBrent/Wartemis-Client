@@ -6,7 +6,7 @@ using System.Text;
 namespace Chess.Models {
     public class PieceFactory {
         public Piece GetPieceFromDesignator(string designator) {
-            Color color = char.IsUpper(designator.ToCharArray()[0]) ? Color.BLACK : Color.WHITE;
+            Color color = char.IsUpper(designator.ToCharArray()[0]) ? Color.WHITE : Color.BLACK;
             switch (designator.ToLower().ToCharArray()[0]) {
                 case 'p':
                     return new Pawn(color);
