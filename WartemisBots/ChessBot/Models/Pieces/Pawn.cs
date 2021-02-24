@@ -7,5 +7,14 @@ namespace Chess.Models.Pieces {
         public Pawn(Color color) : base(color) {
             Designator = "p";
         }
+
+        public override void Evaluate() {
+            switch (Color) {
+                case Color.BLACK:
+                    break;
+                case Color.WHITE:
+                    break;
+            }
+        }
     }
 }

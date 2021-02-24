@@ -7,5 +7,9 @@ namespace Chess.Models.Pieces {
         public Bishop(Color color) : base(color) {
             Designator = "b";
         }
+
+        public override void Evaluate() {
+            throw new NotImplementedException();
+        }
     }
 }

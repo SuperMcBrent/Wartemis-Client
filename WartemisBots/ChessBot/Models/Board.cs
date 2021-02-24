@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Chess.Models.Pieces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,14 +40,23 @@ namespace Chess.Models {
             }
         }
 
-        public void EvaluateBoard() {
+        public void Evaluate() {
             foreach (Cell cell in Cells) {
                 if (cell.IsEmpty()) continue;
+
+                if (cell.Piece.GetType() != typeof(Pawn)) continue;
+
+                cell.Piece.Evaluate();
+
+                Log.Information("Pawn: {pawn}", cell.Piece);
 
                 // waar kan ik naartoe
                 // waar kan ik niet naartoe
                 // wie bedreigt mij
                 // wie beschermt mij
+                // wie kan ik aanvallen
+
+                //herevalueer
             }
         }
 
@@ -60,7 +70,7 @@ namespace Chess.Models {
                 }
                 if (row < 7) board += "\n";
             }
-            Log.Information("The Board: \n{board}", board);
+            Log.Information("Board: \n{board}", board);
         }
 
         public Move GetMove() {

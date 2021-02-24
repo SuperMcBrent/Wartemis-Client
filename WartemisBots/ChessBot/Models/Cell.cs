@@ -18,7 +18,9 @@ namespace Chess.Models {
         }
 
         public void SetPiece(Piece piece) {
-            if (piece is null) return;
+            if (piece is null) return; // no piece passed
+            if (Piece != null) return; // cell is occupied
+            piece.Position = this;
             Piece = piece;
         }
 
@@ -26,5 +28,53 @@ namespace Chess.Models {
             int index = Board.Cells.IndexOf(this);
             return $"{Parsers.IndexToText(index)}";
         }
+
+        #region Neighbouring Cells
+        public Cell CellToNorth() {
+            Cell cellToNorth = null;
+            int index = Board.Cells.IndexOf(this);
+            try {
+                cellToNorth = Board.Cells[index - 8];
+            } catch (Exception) {
+
+            }
+            return cellToNorth;
+        }
+
+        public Cell CellToSouth() {
+            Cell cellToSouth = null;
+            int index = Board.Cells.IndexOf(this);
+            try {
+                cellToSouth = Board.Cells[index + 8];
+            } catch (Exception) {
+
+            }
+            return cellToSouth;
+        }
+
+        public Cell CellToEast() {
+            Cell cellToEeast = null;
+            int index = Board.Cells.IndexOf(this);
+            try {
+                if (index % 7 == 0) throw new Exception();
+                cellToEeast = Board.Cells[index + 1];
+            } catch (Exception) {
+
+            }
+            return cellToEeast;
+        }
+
+        public Cell CellToWest() {
+            Cell cellToWest = null;
+            int index = Board.Cells.IndexOf(this);
+            try {
+                if (index % 8 == 0) throw new Exception();
+                cellToWest = Board.Cells[index - 1];
+            } catch (Exception) {
+
+            }
+            return cellToWest;
+        }
+        #endregion
     }
 }

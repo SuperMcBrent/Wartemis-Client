@@ -19,6 +19,7 @@ namespace Chess.Models {
             dynamic fen = JObject.Parse(e.State);
             Board = new Board(fen: (string)fen.fen);
 
+            Board.Evaluate();
             //do something
 
             //SendMove(Board.GetMove());

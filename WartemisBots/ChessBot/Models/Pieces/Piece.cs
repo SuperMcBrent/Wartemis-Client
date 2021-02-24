@@ -8,6 +8,7 @@ namespace Chess.Models.Pieces {
 
         public Color Color { get; private set; }
         public string Designator { get; protected set; }
+        public Cell Position { get; set; }
 
         public List<Cell> AvailableTarget { get; private set; }
         public List<Cell> UnAvailableTarget { get; private set; }
@@ -21,6 +22,8 @@ namespace Chess.Models.Pieces {
             SpookyScaryCells = new List<Cell>();
             Protectors = new List<Cell>();
         }
+
+        public abstract void Evaluate();
 
         public override string ToString() {
             return Color.Equals(Color.BLACK) ? Designator : Designator.ToUpper();

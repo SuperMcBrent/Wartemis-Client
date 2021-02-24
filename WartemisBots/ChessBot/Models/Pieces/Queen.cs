@@ -7,5 +7,9 @@ namespace Chess.Models.Pieces {
         public Queen(Color color) : base(color) {
             Designator = "q";
         }
+
+        public override void Evaluate() {
+            throw new NotImplementedException();
+        }
     }
 }

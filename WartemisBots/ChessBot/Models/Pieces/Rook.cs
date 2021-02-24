@@ -7,5 +7,9 @@ namespace Chess.Models.Pieces {
         public Rook(Color color) : base(color) {
             Designator = "r";
         }
+
+        public override void Evaluate() {
+            throw new NotImplementedException();
+        }
     }
 }
