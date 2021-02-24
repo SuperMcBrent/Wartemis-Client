@@ -46,7 +46,7 @@ namespace Chess.Models {
 
                 cell.Piece.Evaluate();
 
-                Log.Information("Pawn: {pawn}", cell.Piece);
+                //Log.Information("Pawn: {pawn}", cell.Piece);
 
                 // waar kan ik naartoe
                 // waar kan ik niet naartoe

@@ -19,14 +19,25 @@ namespace Chess.Models {
 
         public void SetPiece(Piece piece) {
             if (piece is null) return; // no piece passed
-            if (Piece != null) return; // cell is occupied
-            piece.Position = this;
+            if (!IsEmpty()) return; // cell is occupied
+            piece.Cell = this;
             Piece = piece;
         }
 
         public override string ToString() {
             int index = Board.Cells.IndexOf(this);
             return $"{Parsers.IndexToText(index)}";
+        }
+
+        public void EvaluateForPiece(Piece piece) {
+            //TODO remove, doesnt belong here, goto PIECE class
+            if (IsEmpty()) {
+                piece.AvailableTargets.Add(this);
+            } else {
+                piece.UnAvailableTargets.Add(this);
+            }
+            // has enemy piece?
+            // has ally piece?
         }
 
         #region Cardinal Neighbouring Cells

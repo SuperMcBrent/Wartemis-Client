@@ -33,10 +33,8 @@ namespace ConsoleApp {
             );
 
             Printers.PrintBoard(cb.Board);
-            Console.WriteLine();
 
             Printers.PrintNeighboursOfCell(cb.Board.Cells[0]);
-            Console.WriteLine();
             Printers.PrintNeighboursOfCell(cb.Board.Cells[56]);
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");

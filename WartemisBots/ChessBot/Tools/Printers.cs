@@ -7,15 +7,16 @@ using System.Text;
 namespace Chess.Tools {
     public static class Printers {
         public static void PrintNeighboursOfCell(Cell cell) {
-            Log.Information("Neighbours of {cell}, {piece}", cell, cell.Piece);
-            Log.Information("North:     {cell}, {piece}", cell.CellToNorth(), cell.CellToNorth()?.Piece);
-            Log.Information("NorthEast: {cell}, {piece}", cell.CellToNorthEast(), cell.CellToNorthEast()?.Piece);
-            Log.Information("East:      {cell}, {piece}", cell.CellToEast(), cell.CellToEast()?.Piece);
-            Log.Information("SouthEast: {cell}, {piece}", cell.CellToSouthEast(), cell.CellToSouthEast()?.Piece);
-            Log.Information("South:     {cell}, {piece}", cell.CellToSouth(), cell.CellToSouth()?.Piece);
-            Log.Information("SouthWest: {cell}, {piece}", cell.CellToSouthWest(), cell.CellToSouthWest()?.Piece);
-            Log.Information("West:      {cell}, {piece}", cell.CellToWest(), cell.CellToWest()?.Piece);
-            Log.Information("NorthWest: {cell}, {piece}", cell.CellToNorthWest(), cell.CellToNorthWest()?.Piece);
+            Log.Information("---------- Cell - Piece");
+            Log.Information("[Origin]:  {cell,-6} {piece,-6}", cell, cell.Piece);
+            Log.Information("North:     {cell,-6} {piece,-6}", cell.CellToNorth(), cell.CellToNorth()?.Piece);
+            Log.Information("NorthEast: {cell,-6} {piece,-6}", cell.CellToNorthEast(), cell.CellToNorthEast()?.Piece);
+            Log.Information("East:      {cell,-6} {piece,-6}", cell.CellToEast(), cell.CellToEast()?.Piece);
+            Log.Information("SouthEast: {cell,-6} {piece,-6}", cell.CellToSouthEast(), cell.CellToSouthEast()?.Piece);
+            Log.Information("South:     {cell,-6} {piece,-6}", cell.CellToSouth(), cell.CellToSouth()?.Piece);
+            Log.Information("SouthWest: {cell,-6} {piece,-6}", cell.CellToSouthWest(), cell.CellToSouthWest()?.Piece);
+            Log.Information("West:      {cell,-6} {piece,-6}", cell.CellToWest(), cell.CellToWest()?.Piece);
+            Log.Information("NorthWest: {cell,-6} {piece,-6}", cell.CellToNorthWest(), cell.CellToNorthWest()?.Piece);
         }
 
         public static void PrintBoard(Board board, bool withCellNames = false) {

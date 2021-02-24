@@ -9,10 +9,43 @@ namespace Chess.Models.Pieces {
         }
 
         public override void Evaluate() {
+            Cell cell;
             switch (Color) {
                 case Color.BLACK:
+                    // Forward Position (Available/Unavailable)
+                    cell = Cell.CellToSouth();
+                    AddToAvailableOrUnavailableTargets(cell);
+
+                    // 2x Forward Position (Available/Unavailable)
+                    // TODO Only if pawn hasnt moved yet
+                    cell = Cell.CellToSouth().CellToSouth();
+                    AddToAvailableOrUnavailableTargets(cell);
+
+                    // Attack Position Left (Protect/Endanger)
+                    cell = Cell.CellToSouthWest();
+                    AddToProtectingOrEndangeringPieces(cell);
+
+                    // Attack Position Right (Protect/Endanger)
+                    cell = Cell.CellToSouthEast();
+                    AddToProtectingOrEndangeringPieces(cell);
                     break;
                 case Color.WHITE:
+                    // Forward Position (Available/Unavailable)
+                    cell = Cell.CellToNorth();
+                    AddToAvailableOrUnavailableTargets(cell);
+
+                    // 2x Forward Position (Available/Unavailable)
+                    // TODO Only if pawn hasnt moved yet
+                    cell = Cell.CellToNorth().CellToNorth();
+                    AddToAvailableOrUnavailableTargets(cell);
+
+                    // Attack Position Left (Protect/Endanger)
+                    cell = Cell.CellToNorthWest();
+                    AddToProtectingOrEndangeringPieces(cell);
+
+                    // Attack Position Right (Protect/Endanger)
+                    cell = Cell.CellToNorthEast();
+                    AddToProtectingOrEndangeringPieces(cell);
                     break;
             }
         }
