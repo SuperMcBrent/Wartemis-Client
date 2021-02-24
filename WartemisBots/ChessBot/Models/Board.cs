@@ -2,8 +2,6 @@
 using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Chess.Models {
     public class Board {
@@ -58,19 +56,6 @@ namespace Chess.Models {
 
                 //herevalueer
             }
-        }
-
-        public void PrintBoard(bool withCellNames = false) {
-            string board = "";
-            for (int row = 0; row < 8; row++) {
-                for (int col = 0; col < 8; col++) {
-                    int index = (row * 8) + col;
-                    //Console.Write(Cells[index] + (withCellNames?":"+(Cells[index].Piece?.ToString() ?? " "):"") + " ");
-                    board += (withCellNames ? (Cells[index] + ":") : "") + (Cells[index].Piece?.ToString() ?? " ") + " ";
-                }
-                if (row < 7) board += "\n";
-            }
-            Log.Information("Board: \n{board}", board);
         }
 
         public Move GetMove() {

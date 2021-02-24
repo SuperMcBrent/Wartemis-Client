@@ -29,7 +29,7 @@ namespace Chess.Models {
             return $"{Parsers.IndexToText(index)}";
         }
 
-        #region Neighbouring Cells
+        #region Cardinal Neighbouring Cells
         public Cell CellToNorth() {
             Cell cellToNorth = null;
             int index = Board.Cells.IndexOf(this);
@@ -53,27 +53,42 @@ namespace Chess.Models {
         }
 
         public Cell CellToEast() {
-            Cell cellToEeast = null;
+            Cell cellToEast = null;
             int index = Board.Cells.IndexOf(this);
+            if (index % 8 == 7) return null;
             try {
-                if (index % 7 == 0) throw new Exception();
-                cellToEeast = Board.Cells[index + 1];
+                cellToEast = Board.Cells[index + 1];
             } catch (Exception) {
 
             }
-            return cellToEeast;
+            return cellToEast;
         }
 
         public Cell CellToWest() {
             Cell cellToWest = null;
             int index = Board.Cells.IndexOf(this);
+            if (index % 8 == 0) return null;
             try {
-                if (index % 8 == 0) throw new Exception();
                 cellToWest = Board.Cells[index - 1];
             } catch (Exception) {
 
             }
             return cellToWest;
+        }
+        #endregion
+
+        #region Diagonal Neighbouring Cells
+        public Cell CellToNorthEast() {
+            return CellToNorth()?.CellToEast() ?? null;
+        }
+        public Cell CellToNorthWest() {
+            return CellToNorth()?.CellToWest() ?? null;
+        }
+        public Cell CellToSouthEast() {
+            return CellToSouth()?.CellToEast() ?? null;
+        }
+        public Cell CellToSouthWest() {
+            return CellToSouth()?.CellToWest() ?? null;
         }
         #endregion
     }
