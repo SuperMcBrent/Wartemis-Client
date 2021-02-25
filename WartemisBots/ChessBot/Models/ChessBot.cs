@@ -10,14 +10,18 @@ namespace Chess.Models {
     public class ChessBot : Bot {
 
         public Board Board { get; private set; }
+        public ChessState State { get; private set; }
+        // list of states?
 
         public ChessBot(string name) : base(name, GameType.Chess) {
             base.Connection.OnStateReceived += ReceivedState;
         }
 
         private void ReceivedState(object sender, StateReceivedEventArgs e) {
-            dynamic fen = JObject.Parse(e.State);
-            Board = new Board(fen: (string)fen.fen);
+            State = new ChessState(e.State);
+            Board = new Board(fen: State.Fen);
+
+            // TODO task / multithread
 
             Board.Evaluate();
 
@@ -27,8 +31,8 @@ namespace Chess.Models {
         }
 
         private void SendMove(Move move) {
-            string action = $"{{\"from\":{move.From}, \"to\":{move.To}}}";
-            base.Connection.SendAction(action);
+            ChessAction action = new ChessAction(move);
+            base.Connection.SendAction(action.Raw);
         }
     }
 }

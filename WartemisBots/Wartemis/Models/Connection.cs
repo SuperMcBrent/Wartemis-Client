@@ -47,7 +47,8 @@ namespace Wartemis.Models {
         public void RaiseOnStateReceivedEventManually(string fakeReceived) {
             Message message = Builder.ParseMessage(fakeReceived);
             Log.Information("[{Name}] FAKE Received {state} message", Name, "state");
-            string state = (string)message.GetValue("state");
+            //string state = (string)message.GetValue("state");
+            State state = new State((string)message.GetValue("state"));
             OnStateReceivedEvent(state);
         }
 
@@ -71,7 +72,8 @@ namespace Wartemis.Models {
 
             if (message.GetValue("type").Equals("state")) {
                 Log.Information("[{Name}] Received {state} message", Name, "state");
-                string state = (string)message.GetValue("state");
+                //string state = (string)message.GetValue("state");
+                State state = new State((string)message.GetValue("state"));
                 OnStateReceivedEvent(state);
             }
         }
@@ -110,7 +112,7 @@ namespace Wartemis.Models {
             Log.Information("[{Name}] {message}", Name, message);
         }
 
-        protected virtual void OnStateReceivedEvent(string state) {
+        protected virtual void OnStateReceivedEvent(State state) {
             var e = new StateReceivedEventArgs(state);
             OnStateReceived?.Invoke(this, e);
         }

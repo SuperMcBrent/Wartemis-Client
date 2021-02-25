@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess.Tools;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,8 +19,7 @@ namespace Chess.Models.Pieces {
 
                     // 2x Forward Position (Available/Unavailable)
                     // Cant jump, cell in front needs to be empty
-                    // TODO Only if pawn hasnt moved yet
-                    if (Cell.CellToSouth().IsEmpty()) {
+                    if (Cell.CellToSouth().IsEmpty() && IsAtStartPosition()) {
                         cell = Cell.CellToSouth().CellToSouth();
                         AddToAvailableOrUnavailableTargets(cell);
                     }
@@ -31,6 +31,8 @@ namespace Chess.Models.Pieces {
                     // Attack Position Right (Protect/Endanger)
                     cell = Cell.CellToSouthEast();
                     AddToProtectingOrEndangeringPieces(cell);
+
+                    //TODO En passant
                     break;
                 case Color.WHITE:
                     // Forward Position (Available/Unavailable)
@@ -39,8 +41,7 @@ namespace Chess.Models.Pieces {
 
                     // 2x Forward Position (Available/Unavailable)
                     // Cant jump, cell in front needs to be empty
-                    // TODO Only if pawn hasnt moved yet
-                    if (Cell.CellToNorth().IsEmpty()) {
+                    if (Cell.CellToNorth().IsEmpty() && IsAtStartPosition()) {
                         cell = Cell.CellToNorth().CellToNorth();
                         AddToAvailableOrUnavailableTargets(cell);
                     }
@@ -52,8 +53,23 @@ namespace Chess.Models.Pieces {
                     // Attack Position Right (Protect/Endanger)
                     cell = Cell.CellToNorthEast();
                     AddToProtectingOrEndangeringPieces(cell);
+
+                    //TODO En passant
                     break;
             }
+        }
+
+        private bool IsAtStartPosition() {
+            char rank = Parsers.IndexToText(Cell.Board.Cells.IndexOf(Cell)).ToCharArray()[1];
+            switch (Color) {
+                case Color.BLACK:
+                    if (rank == '7') return true;
+                    break;
+                case Color.WHITE:
+                    if (rank == '2') return true;
+                    break;
+            }
+            return false;
         }
     }
 }

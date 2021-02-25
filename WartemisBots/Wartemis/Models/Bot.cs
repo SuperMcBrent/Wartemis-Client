@@ -25,7 +25,7 @@ namespace Wartemis.Models {
         }
 
         private void ReceivedState(object sender, StateReceivedEventArgs e) {
-            Log.Information("[{Name}] State: {state}", Name, e.State.Replace(Environment.NewLine, "").Replace(" ", "").Truncate(75));
+            Log.Information("[{Name}] State: {state}", Name, e.State);
         }
 
     }
