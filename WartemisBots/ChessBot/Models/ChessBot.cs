@@ -20,6 +20,7 @@ namespace Chess.Models {
             Board = new Board(fen: (string)fen.fen);
 
             Board.Evaluate();
+
             //do something
 
             //SendMove(Board.GetMove());

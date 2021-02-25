@@ -17,9 +17,12 @@ namespace Chess.Models.Pieces {
                     AddToAvailableOrUnavailableTargets(cell);
 
                     // 2x Forward Position (Available/Unavailable)
+                    // Cant jump, cell in front needs to be empty
                     // TODO Only if pawn hasnt moved yet
-                    cell = Cell.CellToSouth().CellToSouth();
-                    AddToAvailableOrUnavailableTargets(cell);
+                    if (Cell.CellToSouth().IsEmpty()) {
+                        cell = Cell.CellToSouth().CellToSouth();
+                        AddToAvailableOrUnavailableTargets(cell);
+                    }
 
                     // Attack Position Left (Protect/Endanger)
                     cell = Cell.CellToSouthWest();
@@ -35,9 +38,12 @@ namespace Chess.Models.Pieces {
                     AddToAvailableOrUnavailableTargets(cell);
 
                     // 2x Forward Position (Available/Unavailable)
+                    // Cant jump, cell in front needs to be empty
                     // TODO Only if pawn hasnt moved yet
-                    cell = Cell.CellToNorth().CellToNorth();
-                    AddToAvailableOrUnavailableTargets(cell);
+                    if (Cell.CellToNorth().IsEmpty()) {
+                        cell = Cell.CellToNorth().CellToNorth();
+                        AddToAvailableOrUnavailableTargets(cell);
+                    }
 
                     // Attack Position Left (Protect/Endanger)
                     cell = Cell.CellToNorthWest();

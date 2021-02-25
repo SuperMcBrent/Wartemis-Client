@@ -1,5 +1,4 @@
 ﻿using Chess.Models.Pieces;
-using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -47,12 +46,6 @@ namespace Chess.Models {
                 cell.Piece.Evaluate();
 
                 //Log.Information("Pawn: {pawn}", cell.Piece);
-
-                // waar kan ik naartoe
-                // waar kan ik niet naartoe
-                // wie bedreigt mij
-                // wie beschermt mij
-                // wie kan ik aanvallen
 
                 //herevalueer
             }

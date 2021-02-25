@@ -40,6 +40,7 @@ namespace Chess.Models.Pieces {
             AvailableTargets = new List<Cell>();
             UnAvailableTargets = new List<Cell>();
             EndangeredBy = new List<Piece>();
+            Endangering = new List<Piece>();
             ProtectedBy = new List<Piece>();
             Protecting = new List<Piece>();
         }
@@ -63,6 +64,7 @@ namespace Chess.Models.Pieces {
         public abstract void Evaluate();
 
         protected void AddToAvailableOrUnavailableTargets(Cell cell) {
+            if (cell is null) return;
             if (cell.IsEmpty()) {
                 AvailableTargets.Add(cell);
             } else {
@@ -71,6 +73,8 @@ namespace Chess.Models.Pieces {
         }
 
         protected void AddToProtectingOrEndangeringPieces(Cell cell) {
+            if (cell is null) return;
+            if (cell.IsEmpty()) return;
             if (cell.Piece.Color.Equals(Color)) {
                 // Attack position is ally
                 cell.Piece.AddToProtectedBy(this);

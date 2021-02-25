@@ -29,13 +29,16 @@ namespace ConsoleApp {
             cb.Start();
 
             cb.Connection.RaiseOnStateReceivedEventManually(
-                fakeReceived: "{\"state\":{\"fen\": \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1\"}}"
+                fakeReceived: "{\"state\":{\"fen\": \"rnbqkbnr/pppppppp/8/8/8/1p6/PPPPPPPP/RNBQKBNR w KQkq - 0 1\"}}"
             );
 
             Printers.PrintBoard(cb.Board);
 
-            Printers.PrintNeighboursOfCell(cb.Board.Cells[0]);
-            Printers.PrintNeighboursOfCell(cb.Board.Cells[56]);
+            //Printers.PrintNeighboursOfCell(cb.Board.Cells[0]);
+
+            Printers.PrintPieceEvaluation(cb.Board.Cells[48].Piece);
+
+            Printers.PrintPieceEvaluation(cb.Board.Cells[41].Piece);
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");
             //pwb.Start();

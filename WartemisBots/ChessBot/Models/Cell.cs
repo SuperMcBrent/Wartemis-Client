@@ -29,17 +29,6 @@ namespace Chess.Models {
             return $"{Parsers.IndexToText(index)}";
         }
 
-        public void EvaluateForPiece(Piece piece) {
-            //TODO remove, doesnt belong here, goto PIECE class
-            if (IsEmpty()) {
-                piece.AvailableTargets.Add(this);
-            } else {
-                piece.UnAvailableTargets.Add(this);
-            }
-            // has enemy piece?
-            // has ally piece?
-        }
-
         #region Cardinal Neighbouring Cells
         public Cell CellToNorth() {
             Cell cellToNorth = null;
