@@ -54,7 +54,7 @@ namespace Chess.Models.Pieces {
                     cell = Cell.CellToNorthEast();
                     AddToProtectingOrEndangeringPieces(cell);
 
-                    //TODO En passant
+                    //TODO En Passant
                     break;
             }
         }

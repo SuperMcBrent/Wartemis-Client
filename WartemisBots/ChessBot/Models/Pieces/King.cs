@@ -9,7 +9,41 @@ namespace Chess.Models.Pieces {
         }
 
         public override void Evaluate() {
-            throw new NotImplementedException();
+            Cell cell;
+
+            cell = Cell.CellToNorth();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToNorthEast();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToEast();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToSouthEast();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToSouth();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToSouthWest();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToWest();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            cell = Cell.CellToNorthWest();
+            AddToAvailableOrUnavailableTargets(cell);
+            AddToProtectingOrEndangeringPieces(cell);
+
+            // TODO Castling
         }
     }
 }
