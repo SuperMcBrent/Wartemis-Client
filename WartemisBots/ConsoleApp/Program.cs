@@ -32,13 +32,13 @@ namespace ConsoleApp {
                 fakeReceived: "{\"state\":{\"fen\": \"rnbqkbnr/pppppppp/8/8/8/1p6/PPPPPPPP/RNBQKBNR w KQkq - 0 1\"}}"
             );
 
-            Printers.PrintBoard(cb.Board);
+            Printers.PrintBoard(cb.Board, true);
 
             //Printers.PrintNeighboursOfCell(cb.Board.Cells[0]);
 
-            Printers.PrintPieceEvaluation(cb.Board.Cells[48].Piece);
+            Printers.PrintPieceEvaluation(cb.Board.Cells[Parsers.TextToIndex("a2")].Piece);
 
-            Printers.PrintPieceEvaluation(cb.Board.Cells[41].Piece);
+            Printers.PrintPieceEvaluation(cb.Board.Cells[Parsers.TextToIndex("b3")].Piece);
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");
             //pwb.Start();

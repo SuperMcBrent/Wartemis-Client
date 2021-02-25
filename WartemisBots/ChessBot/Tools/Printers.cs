@@ -25,14 +25,17 @@ namespace Chess.Tools {
         public static void PrintBoard(Board board, bool withCellNames = false) {
             if (board is null) return;
             string boardString = "";
+            if (withCellNames) boardString += "  " + String.Join(" ", Parsers.Files) + "\n";
             for (int row = 0; row < 8; row++) {
+                if (withCellNames) boardString += "" + Parsers.Ranks[row] + " ";
                 for (int col = 0; col < 8; col++) {
                     int index = (row * 8) + col;
-                    //Console.Write(Cells[index] + (withCellNames?":"+(Cells[index].Piece?.ToString() ?? " "):"") + " ");
-                    boardString += (withCellNames ? (board.Cells[index] + ":") : "") + (board.Cells[index].Piece?.ToString() ?? " ") + " ";
+                    boardString += (board.Cells[index].Piece?.ToString() ?? " ") + " ";
                 }
+                if (withCellNames) boardString += "" + Parsers.Ranks[row] + " ";
                 if (row < 7) boardString += "\n";
             }
+            if (withCellNames) boardString += "\n  " + String.Join(" ", Parsers.Files);
             Log.Information("Board: \n{board}", boardString);
         }
 
