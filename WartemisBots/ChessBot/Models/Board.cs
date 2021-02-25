@@ -44,7 +44,7 @@ namespace Chess.Models {
                 //if (cell.Piece.GetType() == typeof(Pawn)) continue;
                 //if (cell.Piece.GetType() == typeof(Rook)) continue;
                 //if (cell.Piece.GetType() == typeof(Knight)) continue;
-                if (cell.Piece.GetType() == typeof(Bishop)) continue;
+                //if (cell.Piece.GetType() == typeof(Bishop)) continue;
                 if (cell.Piece.GetType() == typeof(King)) continue;
                 if (cell.Piece.GetType() == typeof(Queen)) continue;
 
