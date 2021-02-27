@@ -36,7 +36,9 @@ namespace ConsoleApp {
 
             //Printers.PrintNeighboursOfCell(cb.Board.Cells[0]);
 
-            Printers.PrintPieceEvaluation(cb.Board.Cells[Parsers.TextToIndex("d5")].Piece);
+            //Printers.PrintPieceEvaluation(cb.Board.Cells[Parsers.TextToIndex("d5")].Piece);
+
+            Printers.PrintBoardEvaluation(cb.Board);
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");
             //pwb.Start();

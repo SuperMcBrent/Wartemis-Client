@@ -27,7 +27,7 @@ namespace Chess.Models {
 
             //do something
 
-            //SendMove(Board.GetMove());
+            SendMove(Board.GetMove());
         }
 
         private void SendMove(Move move) {

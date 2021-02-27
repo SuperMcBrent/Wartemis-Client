@@ -1,24 +1,40 @@
 ﻿using Chess.Models.Pieces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Chess.Models {
     public class Board {
         public List<Cell> Cells { get; set; }
         public PieceFactory PieceFactory { get; private set; }
+        public MoveFactory MoveFactory { get; private set; }
 
-        // rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+        public Color ColorPlaying { get; private set; }
+
+        public List<Piece> EndangeredPieces { get; private set; }
+        public List<Piece> EndangeringPieces { get; private set; }
+        public List<Piece> ProtectedPieces { get; private set; }
+        public List<Piece> ProtectingPieces { get; private set; }
+        public List<Piece> UnProtectedPieces { get; private set; } // ?? TODO methods bij piece zetten: IsProtected,IsEndangered etc
 
         public Board(string fen) {
+            EndangeredPieces = new List<Piece>();
+            EndangeringPieces = new List<Piece>();
+            ProtectedPieces = new List<Piece>();
+            ProtectingPieces = new List<Piece>();
+            UnProtectedPieces = new List<Piece>();
             PieceFactory = new PieceFactory();
+            MoveFactory = new MoveFactory(this);
             Cells = new List<Cell>();
             for (int i = 0; i < 64; i++) {
                 Cells.Add(new Cell(this));
             }
-            FenToCells(fen);
+            DeconstructFen(fen);
         }
 
-        private void FenToCells(string fen) {
+        private void DeconstructFen(string fen) {
+
+            #region fill cells
             int counter = 0;
             string boardfen = fen.Split(' ')[0];
             string[] ranks = boardfen.Split('/');
@@ -35,31 +51,25 @@ namespace Chess.Models {
                     }
                 }
             }
+            #endregion
+
+            string colorPlaying = fen.Split(' ')[1];
+            ColorPlaying = colorPlaying == "w" ? Color.WHITE : Color.BLACK;
         }
 
         public void Evaluate() {
             foreach (Cell cell in Cells) {
                 if (cell.IsEmpty()) continue;
-
-                #region Filters
-                //if (cell.Piece.GetType() == typeof(Pawn)) continue;
-                //if (cell.Piece.GetType() == typeof(Rook)) continue;
-                //if (cell.Piece.GetType() == typeof(Knight)) continue;
-                //if (cell.Piece.GetType() == typeof(Bishop)) continue;
-                //if (cell.Piece.GetType() == typeof(King)) continue;
-                //if (cell.Piece.GetType() == typeof(Queen)) continue;
-                #endregion
-
                 cell.Piece.Evaluate();
-
-                //Log.Information("Pawn: {pawn}", cell.Piece);
-
-                //herevalueer
             }
+            EndangeredPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.EndangeredBy.Count > 0).Select(c => c.Piece));
+            EndangeringPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.Endangering.Count > 0).Select(c => c.Piece));
+            ProtectedPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.ProtectedBy.Count > 0).Select(c => c.Piece));
+            ProtectingPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.Protecting.Count > 0).Select(c => c.Piece));
         }
 
         public Move GetMove() {
-            throw new NotImplementedException();
+            return MoveFactory.GetTestMove();
         }
     }
 }

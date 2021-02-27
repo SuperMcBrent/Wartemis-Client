@@ -60,5 +60,37 @@ namespace Chess.Tools {
             string endangeredByPieces = String.Join<string>(", ", piece.EndangeredBy.Select(p => $"{p}[{p.Cell}]"));
             Log.Information("Piece {piece}[{cell}] can be attacked by {cells}.", piece, piece.Cell, endangeredByPieces == "" ? "noone" : endangeredByPieces);
         }
+
+        public static void PrintBoardEvaluation(Board board, bool extensive = false) {
+            if (board is null) return;
+
+            Log.Information("Board has {count} piece(s) that are in danger.", board.EndangeredPieces.Count);
+            foreach (Piece piece in board.EndangeredPieces) {
+                foreach (Piece threat in piece.EndangeredBy) {
+                    Log.Information("Piece {0}[{1}] is threatened by {2}[{3}]", piece, piece.Cell, threat, threat.Cell);
+                }
+            }
+
+            Log.Information("Board has {count} piece(s) that are threatening another piece.", board.EndangeringPieces.Count);
+            foreach (Piece piece in board.EndangeringPieces) {
+                foreach (Piece target in piece.Endangering) {
+                    Log.Information("Piece {0}[{1}] is threatening {2}[{3}]", piece, piece.Cell, target, target.Cell);
+                }
+            }
+
+            Log.Information("Board has {count} piece(s) that are being protected.", board.ProtectedPieces.Count);
+            foreach (Piece piece in board.ProtectedPieces) {
+                foreach (Piece protector in piece.ProtectedBy) {
+                    if (extensive) Log.Information("Piece {0}[{1}] is protected by {2}[{3}]", piece, piece.Cell, protector, protector.Cell);
+                }
+            }
+
+            Log.Information("Board has {count} piece(s) that are protecting another piece.", board.ProtectingPieces.Count);
+            foreach (Piece piece in board.ProtectingPieces) {
+                foreach (Piece target in piece.Protecting) {
+                    if (extensive) Log.Information("Piece {0}[{1}] is protecting {2}[{3}]", piece, piece.Cell, target, target.Cell);
+                }
+            }
+        }
     }
 }

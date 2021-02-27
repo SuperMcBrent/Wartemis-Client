@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Wartemis.Models {
-    public class MessageBuilder {
+    public class MessageFactory {
         public Message ParseMessage(string message) {
             Message m = new Message();
             var json = JObject.Parse(message);

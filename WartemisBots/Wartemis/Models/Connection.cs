@@ -15,7 +15,7 @@ namespace Wartemis.Models {
         public WatsonWsClient Client { get; private set; }
         public bool Connected { get; private set; }
         public bool Registered { get; private set; }
-        public MessageBuilder Builder { get; private set; }
+        public MessageFactory Builder { get; private set; }
         public int IdAssignedByServer { get; private set; }
         public string Name { get; private set; }
 
@@ -24,7 +24,7 @@ namespace Wartemis.Models {
         public Connection(string name, string socket) {
             Name = name;
             ConnectionUri = new Uri(socket);
-            this.Builder = new MessageBuilder();
+            this.Builder = new MessageFactory();
         }
 
         public void StartConnection() {

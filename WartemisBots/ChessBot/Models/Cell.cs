@@ -30,6 +30,7 @@ namespace Chess.Models {
         }
 
         #region Cardinal Neighbouring Cells
+
         public Cell CellToNorth() {
             Cell cellToNorth = null;
             int index = Board.Cells.IndexOf(this);

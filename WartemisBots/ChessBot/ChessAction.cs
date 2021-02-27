@@ -1,4 +1,5 @@
 ﻿using Chess.Models;
+using Chess.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Chess {
 
         public ChessAction(Move move) {
             Move = move;
-            Raw = $"{{\"from\":{move.From}, \"to\":{move.To}}}";
+            Raw = $"{{\"from\":{Parsers.TextToIndex(move.From.ToString())}, \"to\":{Parsers.TextToIndex(move.To.ToString())}}}";
         }
     }
 }
