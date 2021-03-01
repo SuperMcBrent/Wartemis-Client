@@ -21,13 +21,9 @@ namespace Chess.Models {
             State = new ChessState(e.State);
             Board = new Board(fen: State.Fen);
 
-            // TODO task / multithread
-
-            Board.Evaluate();
-
             //do something
 
-            SendMove(Board.GetMove());
+            //SendMove(Board.GetPotentialMove());
         }
 
         private void SendMove(Move move) {

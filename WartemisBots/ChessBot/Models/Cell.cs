@@ -24,6 +24,10 @@ namespace Chess.Models {
             Piece = piece;
         }
 
+        public void ClearPiece() {
+            Piece = null;
+        }
+
         public override string ToString() {
             int index = Board.Cells.IndexOf(this);
             return $"{Parsers.IndexToText(index)}";

@@ -7,13 +7,16 @@ namespace Chess.Models {
         public Cell From { get; set; }
         public Cell To { get; set; }
 
-        public Move(Cell from, Cell to) {
+        public Board BoardAfterMove { get; private set; }
+
+        public Move(Cell from, Cell to, Board boardBeforeMove) {
             From = from;
             To = to;
+            BoardAfterMove = new Board(boardBeforeMove, this);
         }
 
         public override string ToString() {
-            return $"{From} => {To}";
+            return $"{From}[{From.Piece}] => {To}[{To.Piece}]";
         }
     }
 }

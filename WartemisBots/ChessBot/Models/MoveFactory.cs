@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Chess.Models {
     public class MoveFactory {
+        public List<Move> PotentialMoves { get; private set; }
 
         public Board Board { get; private set; }
 
@@ -24,12 +25,13 @@ namespace Chess.Models {
                         to = from.CellToSouth().CellToSouth();
                         break;
                     case Color.WHITE:
-                        to = from.CellToNorth().CellToNorth();
+                        to = from.CellToNorth();
                         break;
                 }
+                break;
             }
 
-            return new Move(from, to);
+            return new Move(from, to, Board);
         }
     }
 }

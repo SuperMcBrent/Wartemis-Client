@@ -64,6 +64,8 @@ namespace Chess.Tools {
         public static void PrintBoardEvaluation(Board board, bool extensive = false) {
             if (board is null) return;
 
+            //TODO Split up into white and black
+
             Log.Information("Board has {count} piece(s) that are in danger.", board.EndangeredPieces.Count);
             foreach (Piece piece in board.EndangeredPieces) {
                 foreach (Piece threat in piece.EndangeredBy) {
