@@ -25,7 +25,7 @@ namespace ConsoleApp {
             };
             #endregion
 
-            ChessBot cb = new ChessBot(name: "<u>Chesstily</u>");
+            ChessBot cb = new ChessBot(name: "♙→♛");
             cb.Start();
 
             cb.Connection.RaiseOnStateReceivedEventManually(
