@@ -40,10 +40,13 @@ namespace ConsoleApp {
             Printers.PrintBoard(cb.Board, true);
             Printers.PrintBoardEvaluation(cb.Board);
 
+
+
             Move move = cb.Board.GetPotentialMove();
             Log.Information("The move: {move}", move);
             Printers.PrintBoard(move.BoardAfterMove, true);
             Printers.PrintBoardEvaluation(move.BoardAfterMove);
+            Printers.PrintPieceEvaluation(move.BoardAfterMove.Cells[Parsers.TextToIndex(move.To.ToString())].Piece);
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");
             //pwb.Start();

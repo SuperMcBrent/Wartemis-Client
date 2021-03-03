@@ -42,11 +42,8 @@ namespace Chess.Tools {
         public static void PrintPieceEvaluation(Piece piece) {
             if (piece is null) return;
 
-            string moveToTargets = String.Join<Cell>(", ", piece.AvailableTargets);
+            string moveToTargets = String.Join<Cell>(", ", piece.AvailableEmptyCells);
             Log.Information("Piece {piece}[{cell}] can move to {cells}.", piece, piece.Cell, moveToTargets == "" ? "nowhere" : moveToTargets);
-
-            string cannotMoveToTargets = String.Join<string>(", ", piece.UnAvailableTargets.Select(c => $"{c}[{c.Piece}]"));
-            Log.Information("Piece {piece}[{cell}] cannot move to {cells}.", piece, piece.Cell, cannotMoveToTargets == "" ? "nowhere" : cannotMoveToTargets);
 
             string protectingPieces = String.Join<string>(", ", piece.Protecting.Select(p => $"{p}[{p.Cell}]"));
             Log.Information("Piece {piece}[{cell}] is protecting {cells}.", piece, piece.Cell, protectingPieces == "" ? "noone" : protectingPieces);
@@ -63,36 +60,68 @@ namespace Chess.Tools {
 
         public static void PrintBoardEvaluation(Board board, bool extensive = false) {
             if (board is null) return;
+            bool printedSomething = false;
 
-            //TODO Split up into white and black
+            foreach (var color in Enum.GetValues(typeof(Color))) {
 
-            Log.Information("Board has {count} piece(s) that are in danger.", board.EndangeredPieces.Count);
-            foreach (Piece piece in board.EndangeredPieces) {
-                foreach (Piece threat in piece.EndangeredBy) {
-                    Log.Information("Piece {0}[{1}] is threatened by {2}[{3}]", piece, piece.Cell, threat, threat.Cell);
+                var endangeredPieces = board.EndangeredPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (endangeredPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are in danger.", endangeredPieces.Count, color.ToString());
+                    foreach (Piece piece in endangeredPieces) {
+                        foreach (Piece threat in piece.EndangeredBy) {
+                            if (extensive) Log.Information("Piece {0}[{1}] is threatened by {2}[{3}]", piece, piece.Cell, threat, threat.Cell);
+                        }
+                    }
+                }
+
+                var notEndangeredPieces = board.NotEndangeredPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (notEndangeredPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are in the clear.", notEndangeredPieces.Count, color.ToString());
+                }
+
+                var endangeringPieces = board.EndangeringPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (endangeredPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are threatening another piece.", endangeringPieces.Count, color.ToString());
+                    foreach (Piece piece in endangeringPieces) {
+                        foreach (Piece target in piece.Endangering) {
+                            if (extensive) Log.Information("Piece {0}[{1}] is threatening {2}[{3}]", piece, piece.Cell, target, target.Cell);
+                        }
+                    }
+                }
+
+                var protectedPieces = board.ProtectedPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (protectedPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are being protected.", protectedPieces.Count, color.ToString());
+                    foreach (Piece piece in protectedPieces) {
+                        foreach (Piece protector in piece.ProtectedBy) {
+                            if (extensive) Log.Information("Piece {0}[{1}] is protected by {2}[{3}]", piece, piece.Cell, protector, protector.Cell);
+                        }
+                    }
+                }
+
+                var notProtectedPieces = board.NotProtectedPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (notProtectedPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are not protected.", notProtectedPieces.Count, color.ToString());
+                }
+
+                var protectingPieces = board.ProtectingPieces.Where(p => p.Color.Equals(color)).ToList();
+                if (protectingPieces.Count > 0) {
+                    printedSomething = true;
+                    Log.Information("Board has {count} {color} piece(s) that are protecting another piece.", protectingPieces.Count, color.ToString());
+                    foreach (Piece piece in protectingPieces) {
+                        foreach (Piece target in piece.Protecting) {
+                            if (extensive) Log.Information("Piece {0}[{1}] is protecting {2}[{3}]", piece, piece.Cell, target, target.Cell);
+                        }
+                    }
                 }
             }
 
-            Log.Information("Board has {count} piece(s) that are threatening another piece.", board.EndangeringPieces.Count);
-            foreach (Piece piece in board.EndangeringPieces) {
-                foreach (Piece target in piece.Endangering) {
-                    Log.Information("Piece {0}[{1}] is threatening {2}[{3}]", piece, piece.Cell, target, target.Cell);
-                }
-            }
-
-            Log.Information("Board has {count} piece(s) that are being protected.", board.ProtectedPieces.Count);
-            foreach (Piece piece in board.ProtectedPieces) {
-                foreach (Piece protector in piece.ProtectedBy) {
-                    if (extensive) Log.Information("Piece {0}[{1}] is protected by {2}[{3}]", piece, piece.Cell, protector, protector.Cell);
-                }
-            }
-
-            Log.Information("Board has {count} piece(s) that are protecting another piece.", board.ProtectingPieces.Count);
-            foreach (Piece piece in board.ProtectingPieces) {
-                foreach (Piece target in piece.Protecting) {
-                    if (extensive) Log.Information("Piece {0}[{1}] is protecting {2}[{3}]", piece, piece.Cell, target, target.Cell);
-                }
-            }
+            if (!printedSomething) Log.Information("Nothing to report.");
         }
     }
 }

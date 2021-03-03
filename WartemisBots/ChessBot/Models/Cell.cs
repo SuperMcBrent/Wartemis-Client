@@ -17,6 +17,15 @@ namespace Chess.Models {
             return Piece is null;
         }
 
+        public bool IsOccupantAllied(Piece piece) {
+            if (IsEmpty()) return true;
+            return Piece.Color.Equals(piece.Color);
+        }
+
+        public bool IsOccupantEnemy(Piece piece) {
+            return !IsOccupantAllied(piece);
+        }
+
         public void SetPiece(Piece piece) {
             if (piece is null) return; // no piece passed
             if (!IsEmpty()) return; // cell is occupied

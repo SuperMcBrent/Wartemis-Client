@@ -15,36 +15,29 @@ namespace Chess.Models.Pieces {
         public string Designator { get; protected set; }
         public Cell Cell { get; set; }
 
-        /// <summary>
-        /// Every available cell that is not occupied
-        /// </summary>
-        public List<Cell> AvailableTargets { get; private set; }
-        /// <summary>
-        /// Every unavailable cell that is either occupied by an ally or an enemy
-        /// </summary>
-        public List<Cell> UnAvailableTargets { get; private set; }
+
+        public List<Cell> AvailableEmptyCells { get; private set; }
 
         public IReadOnlyList<Piece> EndangeredBy {
             get => _endangeredBy.AsReadOnly();
             private set => _endangeredBy = (List<Piece>)value;
         }
-        public IReadOnlyList<Piece> Endangering { 
-            get => _endangering.AsReadOnly(); 
-            private set => _endangering = (List<Piece>)value; 
+        public IReadOnlyList<Piece> Endangering {
+            get => _endangering.AsReadOnly();
+            private set => _endangering = (List<Piece>)value;
         }
-        public IReadOnlyList<Piece> ProtectedBy { 
-            get => _protectedBy.AsReadOnly(); 
-            private set => _protectedBy = (List<Piece>)value; 
+        public IReadOnlyList<Piece> ProtectedBy {
+            get => _protectedBy.AsReadOnly();
+            private set => _protectedBy = (List<Piece>)value;
         }
-        public IReadOnlyList<Piece> Protecting { 
-            get => _protecting.AsReadOnly(); 
-            private set => _protecting = (List<Piece>)value; 
+        public IReadOnlyList<Piece> Protecting {
+            get => _protecting.AsReadOnly();
+            private set => _protecting = (List<Piece>)value;
         }
 
         public Piece(Color color) {
             Color = color;
-            AvailableTargets = new List<Cell>();
-            UnAvailableTargets = new List<Cell>();
+            AvailableEmptyCells = new List<Cell>();
             EndangeredBy = new List<Piece>();
             Endangering = new List<Piece>();
             ProtectedBy = new List<Piece>();
@@ -69,19 +62,31 @@ namespace Chess.Models.Pieces {
 
         public abstract void Evaluate();
 
+        public bool IsProtected() {
+            return ProtectedBy.Count > 0;
+        }
+
+        public bool IsEndangered() {
+            return EndangeredBy.Count > 0;
+        }
+
+        public bool IsEndangering() {
+            return Endangering.Count > 0;
+        }
+
+        public bool IsProtecting() {
+            return Protecting.Count > 0;
+        }
+
         protected void AddToAvailableOrUnavailableTargets(Cell cell) {
             if (cell is null) return;
-            if (cell.IsEmpty()) {
-                AvailableTargets.Add(cell);
-            } else {
-                UnAvailableTargets.Add(cell);
-            }
+            if (cell.IsEmpty()) AvailableEmptyCells.Add(cell);
         }
 
         protected void AddToProtectingOrEndangeringPieces(Cell cell) {
             if (cell is null) return;
             if (cell.IsEmpty()) return;
-            if (cell.Piece.Color.Equals(Color)) {
+            if (cell.IsOccupantAllied(this)) {
                 // Attack position is ally
                 cell.Piece.AddToProtectedBy(this);
                 AddToProtecting(cell.Piece);

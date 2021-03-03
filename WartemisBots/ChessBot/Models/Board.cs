@@ -3,6 +3,7 @@ using Chess.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Chess.Models {
     public class Board {
@@ -11,12 +12,14 @@ namespace Chess.Models {
         public MoveFactory MoveFactory { get; private set; }
 
         public Color ColorPlaying { get; private set; }
+        public List<Piece> Pieces => Cells.Where(c => !c.IsEmpty()).Select(c => c.Piece).ToList();
 
         public List<Piece> EndangeredPieces { get; private set; }
         public List<Piece> EndangeringPieces { get; private set; }
+        public List<Piece> NotEndangeredPieces { get; private set; }
         public List<Piece> ProtectedPieces { get; private set; }
         public List<Piece> ProtectingPieces { get; private set; }
-        public List<Piece> UnProtectedPieces { get; private set; } // ?? TODO methods bij piece zetten: IsProtected,IsEndangered etc
+        public List<Piece> NotProtectedPieces { get; private set; }
 
         private Board() {
             Init();
@@ -43,9 +46,10 @@ namespace Chess.Models {
         private void Init() {
             EndangeredPieces = new List<Piece>();
             EndangeringPieces = new List<Piece>();
+            NotEndangeredPieces = new List<Piece>();
             ProtectedPieces = new List<Piece>();
             ProtectingPieces = new List<Piece>();
-            UnProtectedPieces = new List<Piece>();
+            NotProtectedPieces = new List<Piece>();
             PieceFactory = new PieceFactory();
             MoveFactory = new MoveFactory(this);
             Cells = new List<Cell>();
@@ -82,22 +86,54 @@ namespace Chess.Models {
                 if (cell.IsEmpty()) continue;
 
                 //if (cell.Piece.GetType() == typeof(Pawn)) continue;
-                if (cell.Piece.GetType() == typeof(Rook)) continue;
-                if (cell.Piece.GetType() == typeof(Knight)) continue;
-                if (cell.Piece.GetType() == typeof(Bishop)) continue;
-                if (cell.Piece.GetType() == typeof(King)) continue;
-                if (cell.Piece.GetType() == typeof(Queen)) continue;
+                //if (cell.Piece.GetType() == typeof(Rook)) continue;
+                //if (cell.Piece.GetType() == typeof(Knight)) continue;
+                //if (cell.Piece.GetType() == typeof(Bishop)) continue;
+                //if (cell.Piece.GetType() == typeof(King)) continue;
+                //if (cell.Piece.GetType() == typeof(Queen)) continue;
 
                 cell.Piece.Evaluate();
             }
-            EndangeredPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.EndangeredBy.Count > 0).Select(c => c.Piece));
-            EndangeringPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.Endangering.Count > 0).Select(c => c.Piece));
-            ProtectedPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.ProtectedBy.Count > 0).Select(c => c.Piece));
-            ProtectingPieces.AddRange(Cells.Where(c => !c.IsEmpty()).Where(c => c.Piece.Protecting.Count > 0).Select(c => c.Piece));
+            EndangeredPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => c.Piece.IsEndangered())
+                    .Select(c => c.Piece)
+            );
+            EndangeringPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => c.Piece.IsEndangering())
+                    .Select(c => c.Piece)
+            );
+            NotEndangeredPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => !c.Piece.IsEndangered())
+                    .Select(c => c.Piece)
+            );
+            ProtectedPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => c.Piece.IsProtected())
+                    .Select(c => c.Piece)
+            );
+            ProtectingPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => c.Piece.IsProtecting())
+                    .Select(c => c.Piece)
+            );
+            NotProtectedPieces.AddRange(
+                Cells
+                    .Where(c => !c.IsEmpty())
+                    .Where(c => !c.Piece.IsProtected())
+                    .Select(c => c.Piece)
+            );
         }
 
         public Move GetPotentialMove() {
-            return MoveFactory.GetTestMove();
+            return MoveFactory.GetMove();
         }
 
         private void MakeMove(Move move) {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Wartemis.Tools;
 
 namespace Chess.Tools {
     public static class Parsers {
@@ -15,6 +16,9 @@ namespace Chess.Tools {
         }
 
         public static int TextToIndex(string text) {
+            if (!char.IsLetter(text.ToCharArray()[0])) {
+                text = text.Reverse();
+            }
             int col = Array.IndexOf(Files, text.ToLower().ToCharArray()[0]);
             int row = Array.IndexOf(Ranks, text.ToCharArray()[1]);
             return (row * 8) + col;
