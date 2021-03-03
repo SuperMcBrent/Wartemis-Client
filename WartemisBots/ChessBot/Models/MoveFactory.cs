@@ -1,4 +1,5 @@
-﻿using Chess.Tools;
+﻿using Chess.Models.Pieces;
+using Chess.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,15 @@ namespace Chess.Models {
 
         public MoveFactory(Board board) {
             Board = board;
+        }
+
+        private void PreparePotentialMoves() {
+            foreach (Piece piece in Board.EndangeredPieces) {
+                // Add regular moves from piece to moveslist
+                foreach (Cell cell in piece.AvailableTargets) {
+                    PotentialMoves.Add(new Move(piece.Cell, cell, Board));
+                }
+            }
         }
 
         public Move GetTestMove() {
