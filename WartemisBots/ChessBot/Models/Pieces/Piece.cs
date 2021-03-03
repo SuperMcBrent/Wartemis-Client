@@ -15,7 +15,13 @@ namespace Chess.Models.Pieces {
         public string Designator { get; protected set; }
         public Cell Cell { get; set; }
 
+        /// <summary>
+        /// Every available cell that is not occupied
+        /// </summary>
         public List<Cell> AvailableTargets { get; private set; }
+        /// <summary>
+        /// Every unavailable cell that is either occupied by an ally or an enemy
+        /// </summary>
         public List<Cell> UnAvailableTargets { get; private set; }
 
         public IReadOnlyList<Piece> EndangeredBy {
