@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using Chess.Models;
 using Chess.Tools;
+using System.Threading.Tasks;
 
 namespace ConsoleApp {
     class Program {
@@ -40,13 +41,7 @@ namespace ConsoleApp {
             Printers.PrintBoard(cb.Board, true);
             Printers.PrintBoardEvaluation(cb.Board);
 
-
-
-            Move move = cb.Board.GetPotentialMove();
-            Log.Information("The move: {move}", move);
-            Printers.PrintBoard(move.BoardAfterMove, true);
-            Printers.PrintBoardEvaluation(move.BoardAfterMove);
-            Printers.PrintPieceEvaluation(move.BoardAfterMove.Cells[Parsers.TextToIndex(move.To.ToString())].Piece);
+            Task.Run(() => Test(cb));
 
             //PlanetWarsBot pwb = new PlanetWarsBot("Leviathan");
             //pwb.Start();
@@ -54,6 +49,14 @@ namespace ConsoleApp {
             _quitEvent.WaitOne();
             Log.Debug("Shutting down...");
             Console.ReadLine();
+        }
+
+        static void Test(ChessBot cb) {
+            Move move = cb.Board.GetPotentialMove();
+            Log.Information("The move: {move}", move);
+            Printers.PrintBoard(move.BoardAfterMove, true);
+            Printers.PrintBoardEvaluation(move.BoardAfterMove);
+            Printers.PrintPieceEvaluation(move.BoardAfterMove.Cells[Parsers.TextToIndex(move.To.ToString())].Piece);
         }
     }
 }
