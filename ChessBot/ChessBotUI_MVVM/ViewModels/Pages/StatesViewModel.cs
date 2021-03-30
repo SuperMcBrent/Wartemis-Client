@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PresentationLayer.ViewModels.Pages {
-    public class SettingsViewModel : ApplicationViewModelBase, IPageViewModel {
-        public string Name { get; private set; } = "Settings";
+    public class StatesViewModel : ApplicationViewModelBase, IPageViewModel {
+        public string Name { get; private set; } = "States";
     }
 }

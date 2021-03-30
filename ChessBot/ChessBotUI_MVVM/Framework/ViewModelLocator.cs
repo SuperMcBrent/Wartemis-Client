@@ -13,8 +13,8 @@
   xmlns:vm="clr-namespace:Notes.ViewModel"
   DataContext="{Binding Source={x:Static vm:ViewModelLocatorTemplate.ViewModelNameStatic}}"
 */
-using ChessBotUI_MVVM.ViewModels;
-using ChessBotUI_MVVM.ViewModels.Pages;
+using PresentationLayer.ViewModels;
+using PresentationLayer.ViewModels.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
-namespace ChessBotUI_MVVM.Framework {
+namespace PresentationLayer.Framework {
     /// <summary>
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
@@ -90,6 +90,10 @@ namespace ChessBotUI_MVVM.Framework {
 
         public BotViewModel Bot {
             get { return _bootStrapper.Container.Resolve<BotViewModel>(); }
+        }
+
+        public StatesViewModel States {
+            get { return _bootStrapper.Container.Resolve<StatesViewModel>(); }
         }
     }
 }

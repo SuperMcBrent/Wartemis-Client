@@ -1,10 +1,10 @@
-﻿<Window x:Class="ChessBotUI_MVVM.Views.MainView"
+﻿<Window x:Class="PresentationLayer.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:pages="clr-namespace:ChessBotUI_MVVM.Views.Pages"
-        xmlns:models="clr-namespace:ChessBotUI_MVVM.ViewModels.Pages"
+        xmlns:pages="clr-namespace:PresentationLayer.Views.Pages"
+        xmlns:models="clr-namespace:PresentationLayer.ViewModels.Pages"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
@@ -56,14 +56,6 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Board">
-                                <StackPanel Margin="-5">
-                                    <materialDesign:PackIcon Kind="Checkerboard"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem HorizontalAlignment="Center" Margin="0 5">
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
                                     Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Bot">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Robot"/>
@@ -72,9 +64,17 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="States">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="AndroidMessages"/>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem HorizontalAlignment="Center" Margin="0 5">
+                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Board">
+                                <StackPanel Margin="-5">
+                                    <materialDesign:PackIcon Kind="Wrench"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>

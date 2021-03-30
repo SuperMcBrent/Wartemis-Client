@@ -1,10 +1,10 @@
-﻿<Application x:Class="ChessBotUI_MVVM.App"
+﻿<Application x:Class="PresentationLayer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:ChessBotUI_MVVM.Framework"
-             xmlns:res="clr-namespace:ChessBotUI_MVVM.Resources"
+             xmlns:vm="clr-namespace:PresentationLayer.Framework"
+             xmlns:res="clr-namespace:PresentationLayer.Resources"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              StartupUri="Views/MainView.xaml"
              mc:Ignorable="d">

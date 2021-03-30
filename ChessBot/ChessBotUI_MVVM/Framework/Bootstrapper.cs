@@ -1,6 +1,6 @@
-﻿using ChessBotUI_MVVM.Interfaces;
-using ChessBotUI_MVVM.ViewModels;
-using ChessBotUI_MVVM.ViewModels.Pages;
+﻿using PresentationLayer.Interfaces;
+using PresentationLayer.ViewModels;
+using PresentationLayer.ViewModels.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
-namespace ChessBotUI_MVVM.Framework {
+namespace PresentationLayer.Framework {
     /// <summary>
     /// Here the DI magic come on.
     /// </summary>

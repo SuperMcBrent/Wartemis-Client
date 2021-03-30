@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessBotUI_MVVM.Framework {
+namespace PresentationLayer.Framework {
     /// <summary>
     /// Provides a method for Notification support.
     /// We use this class for model classes.

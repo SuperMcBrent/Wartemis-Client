@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using ChessBotUI_MVVM.Framework;
-using ChessBotUI_MVVM.Interfaces;
-using ChessBotUI_MVVM.ViewModels.Pages;
+using PresentationLayer.Framework;
+using PresentationLayer.Interfaces;
+using PresentationLayer.ViewModels.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ChessBotUI_MVVM.ViewModels {
+namespace PresentationLayer.ViewModels {
     public class MainViewModel : ApplicationViewModelBase, IPageViewModel {
 
         public string Name { get; } = "Main";

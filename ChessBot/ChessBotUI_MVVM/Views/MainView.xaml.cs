@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ChessBotUI_MVVM.Views {
+namespace PresentationLayer.Views {
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>

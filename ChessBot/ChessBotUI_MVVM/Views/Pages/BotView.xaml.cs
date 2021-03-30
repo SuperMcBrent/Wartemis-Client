@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChessBotUI_MVVM.Views.Pages {
+namespace PresentationLayer.Views.Pages {
     /// <summary>
     /// Interaction logic for BotView.xaml
     /// </summary>

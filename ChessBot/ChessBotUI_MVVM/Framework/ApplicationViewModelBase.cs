@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessBotUI_MVVM.Framework {
+namespace PresentationLayer.Framework {
     public class ApplicationViewModelBase : ViewModelBase {
         public override void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression) {
             var memberExpr = propertyExpression.Body as MemberExpression;

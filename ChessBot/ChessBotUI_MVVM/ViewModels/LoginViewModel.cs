@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using ChessBotUI_MVVM.Framework;
-using ChessBotUI_MVVM.Interfaces;
+using PresentationLayer.Framework;
+using PresentationLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessBotUI_MVVM.ViewModels {
+namespace PresentationLayer.ViewModels {
     public class LoginViewModel : ApplicationViewModelBase, IPageViewModel {
 
         public string Name { get; private set; } = "Login";

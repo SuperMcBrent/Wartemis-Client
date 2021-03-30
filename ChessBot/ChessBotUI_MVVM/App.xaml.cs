@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Threading;
-using ChessBotUI_MVVM.ViewModels;
-using ChessBotUI_MVVM.Views;
+using PresentationLayer.ViewModels;
+using PresentationLayer.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
 
-namespace ChessBotUI_MVVM {
+namespace PresentationLayer {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

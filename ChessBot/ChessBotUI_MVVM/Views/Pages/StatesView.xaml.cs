@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace PresentationLayer.Views.Pages {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for StatesView.xaml
     /// </summary>
-    public partial class SettingsView : UserControl {
-        public SettingsView() {
+    public partial class StatesView : UserControl {
+        public StatesView() {
             InitializeComponent();
         }
     }

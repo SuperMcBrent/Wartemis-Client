@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessBotUI_MVVM.Interfaces {
+namespace PresentationLayer.Interfaces {
     public interface IPageViewModel {
         string Name { get; }
     }
