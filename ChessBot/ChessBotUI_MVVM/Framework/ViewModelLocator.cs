@@ -84,8 +84,8 @@ namespace PresentationLayer.Framework {
             get { return _bootStrapper.Container.Resolve<SettingsViewModel>(); }
         }
 
-        public BoardViewModel Board {
-            get { return _bootStrapper.Container.Resolve<BoardViewModel>(); }
+        public ChessBoardViewModel ChessBoard {
+            get { return _bootStrapper.Container.Resolve<ChessBoardViewModel>(); }
         }
 
         public BotViewModel Bot {

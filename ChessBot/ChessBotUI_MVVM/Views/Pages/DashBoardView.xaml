@@ -83,7 +83,7 @@
                                     <materialDesign:PackIcon.Foreground>
                                         <LinearGradientBrush>
                                             <GradientStop Color="Black" Offset="0.0"/>
-                                            --><!--<GradientStop Color="Wheat" Offset="1"/>--><!--
+                                            <GradientStop Color="Wheat" Offset="1"/>
                                         </LinearGradientBrush>
                                     </materialDesign:PackIcon.Foreground>
                                 </materialDesign:PackIcon>

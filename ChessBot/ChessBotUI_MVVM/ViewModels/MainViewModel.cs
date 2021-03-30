@@ -26,7 +26,8 @@ namespace PresentationLayer.ViewModels {
             PageViewModels.Add(new DashBoardViewModel());
             PageViewModels.Add(new SettingsViewModel());
             PageViewModels.Add(new BotViewModel());
-            PageViewModels.Add(new BoardViewModel());
+            PageViewModels.Add(new ChessBoardViewModel());
+            PageViewModels.Add(new StatesViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
 
@@ -58,7 +59,7 @@ namespace PresentationLayer.ViewModels {
         private void ChangeViewModel(string vmName) {
             CurrentPageViewModel = PageViewModels
                 .FirstOrDefault(vm => vm.Name == vmName);
-            Debug.WriteLine($"Changing to {CurrentPageViewModel.Name}");
+            Debug.WriteLine($"Changing to {CurrentPageViewModel?.Name}");
         }
 
         private void Exit() {

@@ -23,11 +23,14 @@
         <DataTemplate DataType="{x:Type models:SettingsViewModel}">
             <pages:SettingsView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type models:BoardViewModel}">
-            <pages:BoardView/>
+        <DataTemplate DataType="{x:Type models:ChessBoardViewModel}">
+            <pages:ChessBoardView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type models:BotViewModel}">
             <pages:BotView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type models:StatesViewModel}">
+            <pages:StatesView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -72,7 +75,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Board">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="ChessBoard">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Wrench"/>
                                 </StackPanel>

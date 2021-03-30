@@ -29,7 +29,7 @@ namespace PresentationLayer.Framework {
             Container.RegisterType<MainViewModel>();
             Container.RegisterType<DashBoardViewModel>();
             Container.RegisterType<SettingsViewModel>();
-            Container.RegisterType<BoardViewModel>();
+            Container.RegisterType<ChessBoardViewModel>();
             Container.RegisterType<BotViewModel>();
             Container.RegisterType<IPageViewModel>();
         }

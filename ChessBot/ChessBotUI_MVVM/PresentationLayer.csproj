@@ -156,6 +156,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -187,14 +188,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\IPageViewModel.cs" />
+    <Compile Include="Models\ChessBoard.cs" />
+    <Compile Include="Tools\DrawingExt.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\Pages\BoardViewModel.cs" />
+    <Compile Include="ViewModels\Pages\ChessBoardViewModel.cs" />
     <Compile Include="ViewModels\Pages\BotViewModel.cs" />
     <Compile Include="ViewModels\Pages\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\Pages\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Pages\StatesViewModel.cs" />
-    <Compile Include="Views\Pages\BoardView.xaml.cs">
-      <DependentUpon>BoardView.xaml</DependentUpon>
+    <Compile Include="Views\Pages\ChessBoardView.xaml.cs">
+      <DependentUpon>ChessBoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\BotView.xaml.cs">
       <DependentUpon>BotView.xaml</DependentUpon>
@@ -211,7 +214,10 @@
     <Compile Include="Views\Pages\StatesView.xaml.cs">
       <DependentUpon>StatesView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Pages\BoardView.xaml">
+    <DesignData Include="SampleData\ChessBoardViewModelSampleData.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="Views\Pages\ChessBoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,8 +309,26 @@
   <ItemGroup>
     <Resource Include="Images\New.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Content Include="Images\chess\chess_bishop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chess\chess_king.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chess\chess_knight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chess\chess_pawn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chess\chess_queen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chess\chess_rook.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

@@ -17,8 +17,8 @@ namespace PresentationLayer.Views.Pages {
     /// <summary>
     /// Interaction logic for BoardView.xaml
     /// </summary>
-    public partial class BoardView : UserControl {
-        public BoardView() {
+    public partial class ChessBoardView : UserControl {
+        public ChessBoardView() {
             InitializeComponent();
         }
     }
