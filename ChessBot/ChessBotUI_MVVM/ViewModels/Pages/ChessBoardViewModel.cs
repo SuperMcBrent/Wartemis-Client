@@ -26,6 +26,7 @@ namespace PresentationLayer.ViewModels.Pages {
         private ChessBoard _chessBoard;
 
         public string Name { get; private set; } = "ChessBoard";
+
         public ImageSource ChessBoardImage {
             get => _chessBoardImage;
             set {
@@ -37,7 +38,10 @@ namespace PresentationLayer.ViewModels.Pages {
         }
 
         public ChessBoard Board {
-            get => _chessBoard;
+            get {
+                if (_chessBoard is null) _chessBoard = new ChessBoard();
+                return _chessBoard;
+            }
             set {
                 if (_chessBoard != value) {
                     _chessBoard = value;
@@ -47,7 +51,6 @@ namespace PresentationLayer.ViewModels.Pages {
         }
 
         public ChessBoardViewModel() {
-            Board = new ChessBoard();
             ChessBoardImage = GetChessBoardImage(Board); ;
         }
 
@@ -92,9 +95,10 @@ namespace PresentationLayer.ViewModels.Pages {
                 string font = "Tahoma";
                 var ranks = "abcdefgh".ToCharArray();
                 var files = "87654321".ToCharArray();
-                StringFormat sf = new StringFormat();
-                sf.Alignment = StringAlignment.Center;
-                sf.LineAlignment = StringAlignment.Center;
+                StringFormat sf = new StringFormat {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
                 for (int i = 0; i < 8; i++) {
                     Rectangle rectU = new Rectangle(border + i * size, 0, size, border);
                     gr.DrawString(ranks[i].ToString(), new Font(font, fontSize), Brushes.Black, rectU, sf);

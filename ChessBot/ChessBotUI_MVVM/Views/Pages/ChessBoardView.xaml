@@ -39,7 +39,7 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding ChessBoardImage}" Stretch="None" />
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding ChessBoardImage}" Stretch="None"/>
         <!--<TextBlock Text="BoardView" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>-->
     </Grid>
 </UserControl>
