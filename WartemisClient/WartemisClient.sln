@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "ChessBotUI_MVVM\PresentationLayer.csproj", "{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess", "ChessBot\Chess.csproj", "{846B1B51-6B23-4527-8B11-5C4AE48D24E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wartemis", "Wartemis\Wartemis.csproj", "{D6402F7D-F7D1-4AC7-8C1E-52F12F72FB77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{846B1B51-6B23-4527-8B11-5C4AE48D24E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{846B1B51-6B23-4527-8B11-5C4AE48D24E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{846B1B51-6B23-4527-8B11-5C4AE48D24E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{D6402F7D-F7D1-4AC7-8C1E-52F12F72FB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6402F7D-F7D1-4AC7-8C1E-52F12F72FB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6402F7D-F7D1-4AC7-8C1E-52F12F72FB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E5BDE1-B4EE-45E7-915D-614DD79BD7DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

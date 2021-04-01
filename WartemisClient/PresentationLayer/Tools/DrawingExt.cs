@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace PresentationLayer.Tools {
     public static class DrawingExt {
@@ -56,6 +59,31 @@ namespace PresentationLayer.Tools {
 
             using (GraphicsPath path = RoundedRect(bounds, cornerRadius)) {
                 graphics.FillPath(brush, path);
+            }
+        }
+
+        public static BitmapImage ToBitmapImage(this Bitmap bitmap) {
+            using (var memory = new MemoryStream()) {
+                bitmap.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = memory;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                return bitmapImage;
+            }
+        }
+
+        public static Bitmap ToBitmap(this BitmapImage bitmapImage) {
+            using (MemoryStream outStream = new MemoryStream()) {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
+                enc.Save(outStream);
+                Bitmap bitmap = new Bitmap(outStream);
+
+                return new Bitmap(bitmap);
             }
         }
     }

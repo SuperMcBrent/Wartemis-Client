@@ -39,7 +39,9 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding ChessBoardImage}" Stretch="None"/>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding ChessBoard.Board}" Stretch="Uniform" Width="600" Height="600"/>
+        <TextBox VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="{Binding ChessBoard.Fen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 Width="600" Margin="20" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Medium"/>
         <!--<TextBlock Text="BoardView" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>-->
     </Grid>
 </UserControl>

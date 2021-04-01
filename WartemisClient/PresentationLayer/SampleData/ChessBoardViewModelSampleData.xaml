@@ -4,11 +4,11 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib" 
     IsInDesignMode="True" 
     IsInDesignModeStatic="False">
-    <ChessBoard_ViewModel:ChessBoardViewModel.Board>
+    <ChessBoard_ViewModel:ChessBoardViewModel.ChessBoard>
         <ChessBoard_Model:ChessBoard>
             <ChessBoard_Model:ChessBoard.Cells>
                 
             </ChessBoard_Model:ChessBoard.Cells>
         </ChessBoard_Model:ChessBoard>
-    </ChessBoard_ViewModel:ChessBoardViewModel.Board>
+    </ChessBoard_ViewModel:ChessBoardViewModel.ChessBoard>
 </ChessBoard_ViewModel:ChessBoardViewModel>

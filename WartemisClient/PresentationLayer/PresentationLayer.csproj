@@ -189,6 +189,7 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IPageViewModel.cs" />
     <Compile Include="Models\ChessBoard.cs" />
+    <Compile Include="Tools\ChessImages.cs" />
     <Compile Include="Tools\DrawingExt.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Pages\ChessBoardViewModel.cs" />
