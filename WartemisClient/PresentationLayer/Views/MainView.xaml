@@ -47,11 +47,10 @@
                     </Style>
                 </Grid.Resources>
                 <Grid Grid.Column="0">
-                    
-                    <ListView Margin="0 15">
-                        <ListViewItem HorizontalAlignment="Center" Margin="0 0 0 45">
+                    <ListView Margin="0 15" PreviewMouseUp="ListView_PreviewMouseUp">
+                        <ListViewItem HorizontalAlignment="Center" Margin="0 0 0 62" IsSelected="True">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="DashBoard">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="DashBoard" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Home"/>
                                 </StackPanel>
@@ -59,7 +58,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Bot">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Bot" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Robot"/>
                                 </StackPanel>
@@ -67,7 +66,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="States">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="States" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="AndroidMessages"/>
                                 </StackPanel>
@@ -75,7 +74,7 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="ChessBoard">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="ChessBoard" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Wrench"/>
                                 </StackPanel>
@@ -83,15 +82,15 @@
                         </ListViewItem>
                         <ListViewItem HorizontalAlignment="Center" Margin="0 5">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Settings">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ChangePageCommand}" CommandParameter="Settings" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="EqualiserVertical"/>
                                 </StackPanel>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem HorizontalAlignment="Center" Margin="0 45 0 0">
+                        <ListViewItem HorizontalAlignment="Center" Margin="0 62 0 0">
                             <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" BorderBrush="{x:Null}"
-                                    Background="{x:Null}" Foreground="Black" Command="{Binding ExitCommand}">
+                                    Background="{x:Null}" Foreground="Black" Command="{Binding ExitCommand}" Margin="-5">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="ExitToApp"/>
                                 </StackPanel>

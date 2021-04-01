@@ -3,30 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PresentationLayer.Views.Pages"
+             xmlns:local="clr-namespace:PresentationLayer.Views.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="730" d:DesignWidth="905"
              DataContext="{Binding Settings, Source={StaticResource Locator}}">
+    <UserControl.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Silver" CornerRadius="10,10,0,0" Background="#cccccc">
+                                <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" Margin="10 5"/>
+                            </Border>
+                            <Border Grid.Row="1" BorderBrush="silver" BorderThickness="1" CornerRadius="0,0,10,10" Background="#eeeeee">
+                                <ContentPresenter Margin="4" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid Background="#F6F6F8">
-        <Grid Margin="10">
+        <StackPanel Margin="10">
+            <Grid Height="60">
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
+                            HorizontalAlignment="Left" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <StackPanel Margin="-5">
+                        <materialDesign:PackIcon Kind="ArrowBack" Foreground="Gray"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox>
+            <!--<GroupBox Margin="10 0">
                 <GroupBox.Header>
-                    <TextBlock Text="Instellingen" Foreground="White" FontWeight="Medium" FontSize="22"/>
-                </GroupBox.Header>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Naam:" FontSize="18" FontWeight="Medium" VerticalAlignment="Center" Margin="10 0"/>
-                        <TextBox Text="Hallo Genty" FontSize="18" FontWeight="Medium" Width="200"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Gear" Width="25" Height="25" Margin="0 3 4 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Settings" Foreground="Black" FontWeight="Medium" FontSize="24" VerticalAlignment="Center"/>
                     </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox.Header>
+                
+            </GroupBox>-->
+            <StackPanel Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="15" Margin="10 0">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0" UniformCornerRadius="15" 
+                                     BorderThickness="5" BorderBrush="White" Background="#F3F4F8">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                                <materialDesign:PackIcon Kind="Gear" Width="25" Height="25" Margin="0 3 4 0" VerticalAlignment="Center"/>
+                                <TextBlock Text="Client Settings" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Username:" FontSize="18" FontWeight="Medium" VerticalAlignment="Center" Margin="10 5"/>
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Socket:" FontSize="18" FontWeight="Medium" VerticalAlignment="Center" Margin="10 5"/>
+                            <TextBlock Grid.Column="0" Grid.Row="3" Text="Language:" FontSize="18" FontWeight="Medium" VerticalAlignment="Center" Margin="10 5"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" Text="Anonymous" FontSize="18" FontWeight="Medium" Width="auto" Margin="0 0 10 0"/>
+                            <TextBox Grid.Column="1" Grid.Row="2" Text="ws://api.wartemis.com/socket" FontSize="18" FontWeight="Medium" Width="auto" Margin="0 0 10 0"/>
+                            <ComboBox Grid.Column="1" Grid.Row="3" Width="auto" materialDesign:HintAssist.Hint="Language" Margin="0 0 10 0" FontSize="18">
+                                <ComboBoxItem>
+                                    <TextBlock Text="Nederlands"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Text="English"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                    </materialDesign:Card>
+                </Border>
+            </StackPanel>
+
             <!--<TextBlock Text="SettingsView" VerticalAlignment="Center" HorizontalAlignment="Center" 
                    FontSize="30" FontWeight="Medium" Grid.ColumnSpan="2"/>-->
-        </Grid>
+            </Grid>
+        </StackPanel>
         <!--<Rectangle Fill="LightGray">
             <Rectangle.OpacityMask>
                 <ImageBrush ImageSource="/Images/New.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
