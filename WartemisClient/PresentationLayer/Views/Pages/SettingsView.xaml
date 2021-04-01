@@ -8,11 +8,29 @@
              d:DesignHeight="730" d:DesignWidth="905"
              DataContext="{Binding Settings, Source={StaticResource Locator}}">
     <Grid Background="#F6F6F8">
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Instellingen" Foreground="White" FontWeight="Medium" FontSize="22"/>
+                </GroupBox.Header>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Naam:" FontSize="18" FontWeight="Medium" VerticalAlignment="Center" Margin="10 0"/>
+                        <TextBox Text="Hallo Genty" FontSize="18" FontWeight="Medium" Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <!--<TextBlock Text="SettingsView" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   FontSize="30" FontWeight="Medium" Grid.ColumnSpan="2"/>-->
+        </Grid>
         <!--<Rectangle Fill="LightGray">
             <Rectangle.OpacityMask>
                 <ImageBrush ImageSource="/Images/New.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
             </Rectangle.OpacityMask>
         </Rectangle>-->
-        <TextBlock Text="SettingsView" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
     </Grid>
 </UserControl>
