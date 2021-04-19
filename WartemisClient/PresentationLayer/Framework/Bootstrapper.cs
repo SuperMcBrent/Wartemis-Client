@@ -27,10 +27,6 @@ namespace PresentationLayer.Framework {
         private void ConfigureContainer() {
             Container.RegisterType<LoginViewModel>();
             Container.RegisterType<MainViewModel>();
-            Container.RegisterType<DashBoardViewModel>();
-            Container.RegisterType<SettingsViewModel>();
-            Container.RegisterType<ChessBoardViewModel>();
-            Container.RegisterType<BotViewModel>();
             Container.RegisterType<IPageViewModel>();
         }
     }
